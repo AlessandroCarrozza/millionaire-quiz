@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* testo domanda e testo opzione */
+.text {
+    color: white;
+    display: inline-block;
+    border: 3px solid white;
+    padding: 1rem;
+    text-align: center;
+}
+
+#logo-container {
+    height: 40vh;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    height: 75%;
+}
+
+#game-container {
+    height: 60vh;
+    background-color: salmon;
+}
+
+/* domanda */
+.question {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.question .text {
+    min-width: 500px;
+}
+
+
+/* opzione */
+.options {
+    /*aggiungo alla width i margin dei text delle opzions*/
+    width: calc(700px + 4rem);
+    margin: auto;
+}
+
+.options .text {
+    display: inline-block;
+    width: 350px;
+    margin: 0.5rem 1rem;
+    cursor: pointer;
+}

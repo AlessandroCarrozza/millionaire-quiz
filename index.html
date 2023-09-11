@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millionaire Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- container logo -->
+        <div id="logo-container">
+            <img id="logo" src="img/logo.png" alt="Logo">
+        </div>
+
+
+        <!-- container di domande e opzioni -->
+        <div id="game-container">
+
+            <div class="question">
+                <div class="text">domanda</div>
+            </div>
+
+            <div class="options">
+                <div class="text" v-for="option in 4">opzione</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
