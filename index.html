@@ -13,20 +13,27 @@
     <div id="app">
 
         <!-- container logo -->
-        <div id="logo-container">
-            <img id="logo" src="img/logo.png" alt="Logo">
+        <div id='logo-container'>
+            <img id='logo' src="img/logo.png" alt="Logo">
         </div>
 
 
         <!-- container di domande e opzioni -->
-        <div id="game-container">
+        <div id='game-container'>
 
-            <div class="question">
-                <div class="text">domanda</div>
-            </div>
+            <button id="play-btn" @click="playStart()">INIZIA PARTITA</button>
 
-            <div class="options">
-                <div class="text" v-for="option in 4">opzione</div>
+            <div class='game d-none'>
+                <div class='question'>
+                    <div class='text'>{{datas[0].question}}</div>
+                </div>
+
+                <div class='options'>
+                    <div class='text'>A: {{datas[0].options.optionOne.text}}</div>
+                    <div class='text'>B: {{datas[0].options.optionTwo.text}}</div>
+                    <div class='text'>C: {{datas[0].options.optionThree.text}}</div>
+                    <div class='text'>D: {{datas[0].options.optionFour.text}}</div>
+                </div>
             </div>
         </div>
 

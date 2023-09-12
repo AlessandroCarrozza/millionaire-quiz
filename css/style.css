@@ -1,7 +1,12 @@
+/* utility */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.d-none {
+    display: none;
 }
 
 /* testo domanda e testo opzione */
@@ -28,6 +33,13 @@
 #game-container {
     height: 60vh;
     background-color: salmon;
+    text-align: center;
+}
+
+button {
+    margin: 1rem 0;
+    padding: 2rem;
+    cursor: pointer;
 }
 
 /* domanda */
