@@ -98,10 +98,15 @@ createApp({
 
         },
         gameResult(index) {
+            const optionsDom = document.querySelectorAll('.options .text')
             if (this.currentOptions[index].result == false) {
-                console.log("falso")
+                console.log('falso')
+                optionsDom[index].classList.add('red')
+
                 // this.gameResult = false;
             } else {
+                console.log('vero')
+                optionsDom[index].classList.add('green')
                 this.userPoints++;
             }
         },

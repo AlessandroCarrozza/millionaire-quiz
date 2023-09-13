@@ -66,3 +66,12 @@ button {
     margin: 0.5rem 1rem;
     cursor: pointer;
 }
+
+/* stile opzioni */
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
