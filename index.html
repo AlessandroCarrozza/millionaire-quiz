@@ -29,12 +29,13 @@
                 </div>
 
                 <div class='options'>
-                    <div class='text' v-for="(option, index) in currentOptions">
+                    <div class='text' v-for="(option, index) in currentOptions" @click="gameResult(index)">
                         <!-- inserire lettera in base all'index (A,B,C,D) -->
                         {{ String.fromCharCode(65 + index) }}:
                         {{option.text}}
                     </div>
                 </div>
+                <h1>{{userPoints}}</h1>
             </div>
         </div>
 
