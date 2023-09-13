@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            gameActive: true,
             currentQuestion: '',
             currentOptions: [],
             datas: [
@@ -81,18 +82,31 @@ createApp({
             gameDom.classList.remove('d-none');
 
 
-            const questionsToDo = [];
-
-            while (questionsToDo.length < this.datas.length) {
-                let singleQuestion = this.datas[this.generateRandomNumber(0, this.datas.length - 1)];
-                if (!questionsToDo.includes(singleQuestion)) {
-                    questionsToDo.push(singleQuestion);
-                }
-            }
+            const questionsToDo = this.generateQuestionsList();
 
             console.log(questionsToDo);
 
+            this.currentQuestion = questionsToDo[0].question;
+            for (let i = 0; i < questionsToDo[0].options.length; i++) {
+                this.currentOptions.push(questionsToDo[0].options[i]);
+            }
 
+            console.log(this.currentOptions)
+
+        },
+
+        generateQuestionsList() {
+            // array delle domande selezionate randomicamente
+            const questions = [];
+            // ciclo per la selezione delle domande
+            while (questions.length < this.datas.length) {
+                let singleQuestion = this.datas[this.generateRandomNumber(0, this.datas.length - 1)];
+                if (!questions.includes(singleQuestion)) {
+                    questions.push(singleQuestion);
+                }
+            }
+
+            return questions;
         },
         generateRandomNumber(min, max) {
             if (min >= max) {

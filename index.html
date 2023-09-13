@@ -29,10 +29,11 @@
                 </div>
 
                 <div class='options'>
-                    <div class='text'>A: </div>
-                    <div class='text'>B: </div>
-                    <div class='text'>C: </div>
-                    <div class='text'>D: </div>
+                    <div class='text' v-for="(option, index) in currentOptions">
+                        <!-- inserire lettera in base all'index (A,B,C,D) -->
+                        {{ String.fromCharCode(65 + index) }}:
+                        {{option.text}}
+                    </div>
                 </div>
             </div>
         </div>
