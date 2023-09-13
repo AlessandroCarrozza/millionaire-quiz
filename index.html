@@ -22,6 +22,7 @@
         <div id='game-container'>
 
             <button id="play-btn" @click="playStart()">INIZIA PARTITA</button>
+            <button id="next-btn" class="d-none" @click="generateSingleQuestion()">PROSSIMA DOMANDA</button>
 
             <div class='game d-none'>
                 <div class='question'>
@@ -29,13 +30,14 @@
                 </div>
 
                 <div class='options'>
-                    <div class='text' v-for="(option, index) in currentOptions" @click="gameResult(index)">
+                    <div class='text' v-for="(option, index) in currentOptions" @click="optionClick(index)">
                         <!-- inserire lettera in base all'index (A,B,C,D) -->
                         {{ String.fromCharCode(65 + index) }}:
                         {{option.text}}
                     </div>
                 </div>
-                <h1>{{userPoints}}</h1>
+                <h1 id="results">Risposte corrette: {{userPoints}}</h1>
+                <h1 id="win" class="d-none">Hai vinto con {{userPoints}} risposte corrette!!!</h1>
             </div>
         </div>
 

@@ -4,7 +4,9 @@ createApp({
     data() {
         return {
             userPoints: 0,
-            gameActive: true,
+            gameOver: false,
+            clickActive: true,
+            questionsToDo: [],
             currentQuestion: '',
             currentOptions: [],
             datas: [
@@ -82,32 +84,60 @@ createApp({
             playBtnDom.classList.add('d-none');
             gameDom.classList.remove('d-none');
 
+            this.generateQuestionsList();
 
-            const questionsToDo = this.generateQuestionsList();
+            this.generateSingleQuestion();
 
-            console.log(questionsToDo);
-
-            if (this.gameActive) {
-                this.currentQuestion = questionsToDo[0].question;
-                for (let i = 0; i < questionsToDo[0].options.length; i++) {
-                    this.currentOptions.push(questionsToDo[0].options[i]);
-                }
-            }
 
             console.log(this.currentOptions)
 
         },
-        gameResult(index) {
-            const optionsDom = document.querySelectorAll('.options .text')
-            if (this.currentOptions[index].result == false) {
-                console.log('falso')
-                optionsDom[index].classList.add('red')
+        optionClick(index) {
+            let optionsDom = document.querySelectorAll('.options .text');
+            const nextBtnDom = document.getElementById('next-btn');
+            const pointsDom = document.getElementById('results');
+            if (!this.gameOver && this.clickActive) {
+                if (this.currentOptions[index].result == false) {
+                    console.log('falso')
+                    optionsDom[index].classList.add('red')
+                    for (let i = 0; i < this.currentOptions.length; i++) {
+                        if (this.currentOptions[i].result) {
+                            optionsDom[i].classList.add('green')
+                        }
+                    }
+                    this.gameOver = true;
+                    pointsDom.innerHTML = `Hai perso, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
 
-                // this.gameResult = false;
-            } else {
-                console.log('vero')
-                optionsDom[index].classList.add('green')
-                this.userPoints++;
+                } else {
+                    console.log('vero')
+                    optionsDom[index].classList.add('green')
+                    this.userPoints++;
+                    nextBtnDom.classList.remove('d-none');
+                    this.clickActive = false;
+
+                    const winDom = document.getElementById('win');
+                    if (this.userPoints == 3) {
+                        nextBtnDom.classList.add('d-none');
+                        pointsDom.classList.add('d-none');
+                        winDom.classList.remove('d-none');
+                    }
+                }
+            }
+        },
+        generateSingleQuestion() {
+            let optionsDom = document.querySelectorAll('.options .text');
+            for (let i = 0; i < optionsDom.length; i++) {
+                optionsDom[i].classList.remove('green');
+            }
+            this.clickActive = true;
+            const nextBtnDom = document.getElementById('next-btn');
+            nextBtnDom.classList.add('d-none');
+            this.currentOptions = [];
+            if (!this.gameOver) {
+                this.currentQuestion = this.questionsToDo[this.userPoints].question;
+                for (let i = 0; i < this.questionsToDo[this.userPoints].options.length; i++) {
+                    this.currentOptions.push(this.questionsToDo[this.userPoints].options[i]);
+                }
             }
         },
         generateQuestionsList() {
@@ -121,7 +151,7 @@ createApp({
                 }
             }
 
-            return questions;
+            this.questionsToDo = questions;
         },
         generateRandomNumber(min, max) {
             if (min >= max) {
