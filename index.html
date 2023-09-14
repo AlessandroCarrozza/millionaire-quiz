@@ -21,7 +21,8 @@
         <!-- container di domande e opzioni -->
         <div id='game-container'>
 
-            <button id="play-btn" @click="playStart()">INIZIA PARTITA</button>
+            <!-- <button id="play-btn" @click="playStart()">INIZIA PARTITA</button> -->
+            <button id="play-btn" class="play-btn" role="button" @click="playStart()">INIZIA PARTITA</button>
 
             <div class='game d-none'>
                 <div class='question'>
@@ -35,9 +36,13 @@
                         {{option.text}}
                     </div>
                 </div>
-                <h1 id="results">Risposte corrette: {{userPoints}}</h1>
-                <h1 id="win" class="d-none">Hai vinto con {{userPoints}} risposte corrette!!!</h1>
-                <button id="next-btn" class="d-none" @click="generateSingleQuestion()">PROSSIMA DOMANDA</button>
+                <h2 id="results">Risposte corrette: {{userPoints}}</h2>
+                <h2 id="win" class="d-none">Hai vinto con {{userPoints}} risposte corrette!!!</h2>
+                <button id="next-btn" class="d-none" @click="generateSingleQuestion()">Prossima domanda</button>
+
+                <img id="trophy" class="d-none" src="img/trofeo.png" alt="Trofeo">
+                <img id="x" class="d-none" src="img/game-over.png" alt="x">
+
             </div>
         </div>
 

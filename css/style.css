@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 .d-none {
@@ -31,6 +32,70 @@
     align-items: center;
 }
 
+.play-btn {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 4rem;
+    padding: 1rem;
+}
+
+.play-btn:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+#next-btn {
+    align-items: center;
+    appearance: none;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0.7rem 3rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s, background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    border: 3px solid black;
+}
+
+#next-btn:active,
+#next-btn:focus {
+    outline: none;
+}
+
+#next-btn:hover {
+    background-position: -20px -20px;
+}
+
+#next-btn:focus:not(:active) {
+    box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
 #logo {
     height: 75%;
 }
@@ -39,12 +104,6 @@
     height: 60vh;
     background-color: #457b9d;
     text-align: center;
-}
-
-button {
-    margin: 1rem 0;
-    padding: 2rem;
-    cursor: pointer;
 }
 
 /* domanda */
@@ -74,9 +133,22 @@ button {
 
 /* stile opzioni */
 .text.red {
-    background-color: red;
+    background-image: linear-gradient(#8d0801, #bf0603);
 }
 
 .text.green {
-    background-color: green;
+    background-image: linear-gradient(#008000, #38b000);
+}
+
+#results,
+#win {
+    padding: 1rem 0;
+}
+
+#trophy {
+    height: 80px;
+}
+
+#x {
+    height: 150px;
 }

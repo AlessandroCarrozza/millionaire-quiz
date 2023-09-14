@@ -92,6 +92,7 @@ createApp({
             const optionsDom = document.querySelectorAll('.options .text');
             const nextBtnDom = document.getElementById('next-btn');
             const pointsDom = document.getElementById('results');
+            const xDom = document.getElementById('x');
             if (!this.gameOver && this.clickActive) { // se il game è non è over e il click attivo
                 if (this.currentOptions[index].result == false) {
                     // se click su falso
@@ -103,6 +104,7 @@ createApp({
                     }
                     this.gameOver = true;
                     pointsDom.innerHTML = `Hai perso con un punteggio di ${this.userPoints}, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
+                    xDom.classList.remove('d-none');
                 } else {
                     // se click su vero
                     optionsDom[index].classList.add('green')
@@ -111,11 +113,13 @@ createApp({
                     this.clickActive = false;
 
                     const winDom = document.getElementById('win');
+                    const trophyDom = document.getElementById('trophy');
                     // se il punteggio è uguale alla length delle domande disponibili, lo user vince
                     if (this.userPoints == this.questionsToDo.length) {
                         nextBtnDom.classList.add('d-none');
                         pointsDom.classList.add('d-none');
                         winDom.classList.remove('d-none');
+                        trophyDom.classList.remove('d-none');
                     }
                 }
             }
