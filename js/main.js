@@ -88,12 +88,9 @@ createApp({
 
             this.generateSingleQuestion();
 
-
-            console.log(this.currentOptions)
-
         },
         optionClick(index) {
-            let optionsDom = document.querySelectorAll('.options .text');
+            const optionsDom = document.querySelectorAll('.options .text');
             const nextBtnDom = document.getElementById('next-btn');
             const pointsDom = document.getElementById('results');
             if (!this.gameOver && this.clickActive) {
@@ -125,7 +122,7 @@ createApp({
             }
         },
         generateSingleQuestion() {
-            let optionsDom = document.querySelectorAll('.options .text');
+            const optionsDom = document.querySelectorAll('.options .text');
             for (let i = 0; i < optionsDom.length; i++) {
                 optionsDom[i].classList.remove('green');
             }
