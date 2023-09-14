@@ -25,19 +25,19 @@
 
             <div class='game d-none'>
                 <div class='question'>
-                    <div class='text'>{{currentQuestion}}</div>
+                    <div class='text bg-gradient'>{{currentQuestion}}</div>
                 </div>
 
                 <div class='options'>
-                    <div class='text' v-for="(option, index) in currentOptions" @click="optionClick(index)">
+                    <div class='text bg-gradient' v-for="(option, index) in currentOptions" @click="optionClick(index)">
                         <!-- inserire lettera in base all'index (A,B,C,D) -->
                         {{ String.fromCharCode(65 + index) }}:
                         {{option.text}}
                     </div>
                 </div>
                 <h1 id="results">Risposte corrette: {{userPoints}}</h1>
-                <button id="next-btn" class="d-none" @click="generateSingleQuestion()">PROSSIMA DOMANDA</button>
                 <h1 id="win" class="d-none">Hai vinto con {{userPoints}} risposte corrette!!!</h1>
+                <button id="next-btn" class="d-none" @click="generateSingleQuestion()">PROSSIMA DOMANDA</button>
             </div>
         </div>
 

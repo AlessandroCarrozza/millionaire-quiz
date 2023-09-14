@@ -5,7 +5,7 @@ createApp({
         return {
             userPoints: 0,
             gameOver: false,
-            clickActive: true,
+            clickActive: true, //clickActive è se l'utente puo clickare sull'opzione
             questionsToDo: [],
             currentQuestion: '',
             currentOptions: [],
@@ -87,15 +87,14 @@ createApp({
             this.generateQuestionsList();
 
             this.generateSingleQuestion();
-
         },
-        optionClick(index) {
+        optionClick(index) { // function del click su un opzione
             const optionsDom = document.querySelectorAll('.options .text');
             const nextBtnDom = document.getElementById('next-btn');
             const pointsDom = document.getElementById('results');
-            if (!this.gameOver && this.clickActive) {
+            if (!this.gameOver && this.clickActive) { // se il game è non è over e il click attivo
                 if (this.currentOptions[index].result == false) {
-                    console.log('falso')
+                    // se click su falso
                     optionsDom[index].classList.add('red')
                     for (let i = 0; i < this.currentOptions.length; i++) {
                         if (this.currentOptions[i].result) {
@@ -103,17 +102,17 @@ createApp({
                         }
                     }
                     this.gameOver = true;
-                    pointsDom.innerHTML = `Hai perso, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
-
+                    pointsDom.innerHTML = `Hai perso con un punteggio di ${this.userPoints}, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
                 } else {
-                    console.log('vero')
+                    // se click su vero
                     optionsDom[index].classList.add('green')
                     this.userPoints++;
                     nextBtnDom.classList.remove('d-none');
                     this.clickActive = false;
 
                     const winDom = document.getElementById('win');
-                    if (this.userPoints == 3) {
+                    // se il punteggio è uguale alla length delle domande disponibili, lo user vince
+                    if (this.userPoints == this.questionsToDo.length) {
                         nextBtnDom.classList.add('d-none');
                         pointsDom.classList.add('d-none');
                         winDom.classList.remove('d-none');
@@ -122,6 +121,7 @@ createApp({
             }
         },
         generateSingleQuestion() {
+            // generare la singola domanda con le relative opzioni
             const optionsDom = document.querySelectorAll('.options .text');
             for (let i = 0; i < optionsDom.length; i++) {
                 optionsDom[i].classList.remove('green');
