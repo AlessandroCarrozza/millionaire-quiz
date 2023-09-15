@@ -161,16 +161,16 @@ createApp({
                     question: 'Qual è la galassia piu vicina alla Via Lattea?',
                     options: [
                         {
-                            text: 'Andromeda',
-                            result: true
+                            text: 'Galanear',
+                            result: false
                         },
                         {
                             text: 'Abell',
                             result: false
                         },
                         {
-                            text: 'Boote',
-                            result: false
+                            text: 'Andromeda',
+                            result: true
                         },
                         {
                             text: 'Magellano',

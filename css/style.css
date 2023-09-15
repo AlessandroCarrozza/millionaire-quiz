@@ -101,7 +101,7 @@
 }
 
 #game-container {
-    height: 60vh;
+    min-height: 60vh;
     background-color: #457b9d;
     text-align: center;
 }
@@ -113,14 +113,14 @@
 }
 
 .question .text {
-    min-width: 500px;
+    width: 500px;
 }
 
 
 /* opzione */
 .options {
     /*aggiungo alla width i margin dei text delle opzions*/
-    width: calc(700px + 4rem);
+    max-width: calc(700px + 4rem);
     margin: auto;
 }
 
@@ -151,4 +151,29 @@
 
 #game-over {
     height: 150px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .options .text {
+        width: 55%;
+        padding: 0.8rem;
+    }
+
+    .question .text {
+        width: 90%;
+    }
+
+    #game-over {
+        display: none;
+    }
+
+    #win {
+        padding: 0 0.2rem;
+    }
+
+    #trophy {
+        height: 60px;
+        padding-top: 0.5rem;
+    }
 }
