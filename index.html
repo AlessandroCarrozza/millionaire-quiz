@@ -41,8 +41,10 @@
                         {{option.text}}
                     </div>
                 </div>
-                <h2 id="results">Risposte corrette: {{userPoints}}</h2>
-                <h2 id="win" class="d-none">Hai vinto con {{userPoints}} risposte corrette!!!</h2>
+
+                <h2 id="lose" class="d-none">HAI PERSO CON UN PUNTEGGIO DI {{userPoints}}</h2>
+                <h2 id="win" class="d-none">HAI VINTO !!!</h2>
+
                 <button id="next-btn" class="d-none" @click="generateSingleQuestion()">Prossima domanda</button>
 
                 <button id="restart-btn" class="play-btn d-none" role="button" @click="reStart()">RIGIOCA</button>

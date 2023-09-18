@@ -247,7 +247,10 @@ createApp({
         reStart() {
             const reStartDom = document.getElementById('restart-btn');
             const optionsDom = document.querySelectorAll('.options .text');
+            const pointsDom = document.getElementById('lose');
             reStartDom.classList.add('d-none');
+
+            pointsDom.classList.add('d-none');
 
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result == false) {
@@ -267,18 +270,19 @@ createApp({
         },
         optionClick(index) { // function del click su un opzione
             const optionsDom = document.querySelectorAll('.options .text');
-            const pointsDom = document.getElementById('results');
+            const pointsDom = document.getElementById('lose');
             if (!this.gameOver && this.clickActive) { // se il game è non è finito e il click attivo
                 if (this.currentOptions[index].result == false) {
                     // se click su falso
-                    this.clickFalse(index, optionsDom, pointsDom);
+                    this.clickFalse(index, optionsDom);
                 } else {
                     // se click su vero
-                    this.clickTrue(index, optionsDom, pointsDom);
+                    this.clickTrue(index, optionsDom);
                 }
             }
         },
-        clickFalse(index, optionsDom, pointsDom) {
+        clickFalse(index, optionsDom) {
+            const pointsDom = document.getElementById('lose');
             const reStartDom = document.getElementById('restart-btn');
             optionsDom[index].classList.add('red')
             for (let i = 0; i < this.currentOptions.length; i++) {
@@ -287,10 +291,10 @@ createApp({
                 }
             }
             this.gameOver = true;
+            pointsDom.classList.remove('d-none');
             reStartDom.classList.remove('d-none');
-            pointsDom.innerHTML = `Hai perso con un punteggio di ${this.userPoints}, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
         },
-        clickTrue(index, optionsDom, pointsDom) {
+        clickTrue(index, optionsDom) {
             const nextBtnDom = document.getElementById('next-btn');
             const winDom = document.getElementById('win');
             const trophyDom = document.getElementById('trophy');
@@ -306,7 +310,6 @@ createApp({
             // se il punteggio è uguale alla length delle domande disponibili, lo user vince
             if (this.userPoints == this.questionsToDo.length) {
                 nextBtnDom.classList.add('d-none');
-                pointsDom.classList.add('d-none');
                 winDom.classList.remove('d-none');
                 trophyDom.classList.remove('d-none');
             }
