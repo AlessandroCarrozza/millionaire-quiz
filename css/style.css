@@ -32,6 +32,11 @@
     align-items: center;
 }
 
+#logo {
+    height: 75%;
+}
+
+/* button inizio partita */
 .play-btn {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
@@ -58,6 +63,7 @@
     margin-top: 4rem;
 }
 
+/* button prossima domanda */
 #next-btn {
     align-items: center;
     appearance: none;
@@ -97,10 +103,6 @@
 
 #next-btn:focus:not(:active) {
     box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
-}
-
-#logo {
-    height: 75%;
 }
 
 #game-container {
@@ -156,6 +158,21 @@
     height: 150px;
 }
 
+/* tracciamento del livello */
+#level-track {
+    width: 700px;
+    height: 50px;
+    border: 3px solid black;
+    margin: auto;
+}
+
+.step {
+    height: 100%;
+    width: calc(100%/10);
+    display: inline-block;
+    border: 1px solid black;
+}
+
 
 @media screen and (max-width: 768px) {
     .options .text {
@@ -178,5 +195,9 @@
     #trophy {
         height: 60px;
         padding-top: 0.5rem;
+    }
+
+    #level-track {
+        display: none;
     }
 }

@@ -21,8 +21,11 @@
         <!-- container di domande e opzioni -->
         <div id='game-container'>
 
-            <!-- <button id="play-btn" @click="playStart()">INIZIA PARTITA</button> -->
             <button id="play-btn" class="play-btn" role="button" @click="playStart()">INIZIA PARTITA</button>
+
+            <div id="level-track">
+                <div class="step" v-for="(step, index) in 10">{{index + 1}}</div>
+            </div>
 
             <div class='game d-none'>
                 <div class='question'>
