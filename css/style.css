@@ -161,16 +161,24 @@
 /* tracciamento del livello */
 #level-track {
     width: 700px;
-    height: 50px;
-    border: 3px solid black;
     margin: auto;
+    padding-top: 1rem;
 }
 
 .step {
     height: 100%;
-    width: calc(100%/10);
+    width: calc(100%/11);
     display: inline-block;
-    border: 1px solid black;
+    border: 2px solid #1d3557;
+    padding: 0.2rem 0;
+}
+
+.current-level {
+    color: red;
+}
+
+.levels-container {
+    border: 2px solid #1d3557;
 }
 
 

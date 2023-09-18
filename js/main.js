@@ -227,9 +227,16 @@ createApp({
         playStart() {
             const playBtnDom = document.getElementById('play-btn');
             const gameDom = document.querySelector('.game');
+            const levelDom = document.querySelectorAll('#level-track .step');
 
             playBtnDom.classList.add('d-none');
             gameDom.classList.remove('d-none');
+
+            for (let i = 0; i < levelDom.length; i++) {
+                levelDom[i].classList.remove('current-level')
+            }
+
+            levelDom[0].classList.add('current-level');
 
             this.generateQuestionsList();
 
@@ -245,6 +252,7 @@ createApp({
                     optionsDom[i].classList.remove('red')
                 }
             }
+
 
             this.userPoints = 0;
             this.gameOver = false;
@@ -284,8 +292,13 @@ createApp({
             const nextBtnDom = document.getElementById('next-btn');
             const winDom = document.getElementById('win');
             const trophyDom = document.getElementById('trophy');
+            const levelDom = document.querySelectorAll('#level-track .step');
             optionsDom[index].classList.add('green')
             this.userPoints++;
+            for (let i = 0; i < levelDom.length; i++) {
+                levelDom[i].classList.remove('current-level')
+            }
+            levelDom[this.userPoints].classList.add('current-level')
             nextBtnDom.classList.remove('d-none');
             this.clickActive = false;
             // se il punteggio è uguale alla length delle domande disponibili, lo user vince
