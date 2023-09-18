@@ -228,9 +228,11 @@ createApp({
             const playBtnDom = document.getElementById('play-btn');
             const gameDom = document.querySelector('.game');
             const levelDom = document.querySelectorAll('#level-track .step');
+            const levelTrackDom = document.getElementById('level-track');
 
             playBtnDom.classList.add('d-none');
             gameDom.classList.remove('d-none');
+            levelTrackDom.classList.remove('d-none');
 
             for (let i = 0; i < levelDom.length; i++) {
                 levelDom[i].classList.remove('current-level')

@@ -174,7 +174,7 @@
 }
 
 .current-level {
-    color: red;
+    border: 2px solid yellow;
 }
 
 .levels-container {
