@@ -5,7 +5,7 @@ createApp({
         return {
             userPoints: 0,
             gameOver: false,
-            clickActive: true, //clickActive è se l'utente puo clickare sull'opzione
+            clickActive: true, //clickActive è se l'utente puo clickare sulle opzioni
             questionsToDo: [],
             currentQuestion: '',
             currentOptions: [],
@@ -235,6 +235,26 @@ createApp({
 
             this.generateSingleQuestion();
         },
+        reStart() {
+            const reStartDom = document.getElementById('restart-btn');
+            const optionsDom = document.querySelectorAll('.options .text');
+            reStartDom.classList.add('d-none');
+
+            for (let i = 0; i < this.currentOptions.length; i++) {
+                if (this.currentOptions[i].result == false) {
+                    optionsDom[i].classList.remove('red')
+                }
+            }
+
+            this.userPoints = 0;
+            this.gameOver = false;
+            this.clickActive = true; //clickActive è se l'utente puo clickare sulle opzioni
+            this.questionsToDo = [];
+            this.currentQuestion = '';
+            this.currentOptions = [];
+
+            this.playStart();
+        },
         optionClick(index) { // function del click su un opzione
             const optionsDom = document.querySelectorAll('.options .text');
             const pointsDom = document.getElementById('results');
@@ -249,7 +269,7 @@ createApp({
             }
         },
         clickFalse(index, optionsDom, pointsDom) {
-            const gameOverDom = document.getElementById('game-over');
+            const reStartDom = document.getElementById('restart-btn');
             optionsDom[index].classList.add('red')
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result) {
@@ -257,8 +277,8 @@ createApp({
                 }
             }
             this.gameOver = true;
+            reStartDom.classList.remove('d-none');
             pointsDom.innerHTML = `Hai perso con un punteggio di ${this.userPoints}, ti mancavano ${this.questionsToDo.length - this.userPoints} domanda/e!`;
-            gameOverDom.classList.remove('d-none');
         },
         clickTrue(index, optionsDom, pointsDom) {
             const nextBtnDom = document.getElementById('next-btn');
