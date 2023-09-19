@@ -184,7 +184,7 @@
 }
 
 .current-level {
-    border: 2px solid yellow;
+    background-image: linear-gradient(yellow, orange);
 }
 
 .levels-container {

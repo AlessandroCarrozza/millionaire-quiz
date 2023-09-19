@@ -227,30 +227,21 @@ createApp({
         playStart() {
             const playBtnDom = document.getElementById('play-btn');
             const gameDom = document.querySelector('.game');
-            const levelDom = document.querySelectorAll('#level-track .step');
             const levelTrackDom = document.getElementById('level-track');
 
             playBtnDom.classList.add('d-none');
             gameDom.classList.remove('d-none');
             levelTrackDom.classList.remove('d-none');
 
-            for (let i = 0; i < levelDom.length; i++) {
-                levelDom[i].classList.remove('current-level')
-            }
-
-            levelDom[0].classList.add('current-level');
-
             this.generateQuestionsList();
 
             this.generateSingleQuestion();
         },
         reStart() {
-            const reStartDom = document.getElementById('restart-btn');
             const optionsDom = document.querySelectorAll('.options .text');
-            const pointsDom = document.getElementById('lose');
-            reStartDom.classList.add('d-none');
+            const loseDom = document.getElementById('lose');
 
-            pointsDom.classList.add('d-none');
+            loseDom.classList.add('d-none');
 
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result == false) {
@@ -270,7 +261,6 @@ createApp({
         },
         optionClick(index) { // function del click su un opzione
             const optionsDom = document.querySelectorAll('.options .text');
-            const pointsDom = document.getElementById('lose');
             if (!this.gameOver && this.clickActive) { // se il game è non è finito e il click attivo
                 if (this.currentOptions[index].result == false) {
                     // se click su falso
@@ -282,8 +272,7 @@ createApp({
             }
         },
         clickFalse(index, optionsDom) {
-            const pointsDom = document.getElementById('lose');
-            const reStartDom = document.getElementById('restart-btn');
+            const loseDom = document.getElementById('lose');
             optionsDom[index].classList.add('red')
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result) {
@@ -291,38 +280,24 @@ createApp({
                 }
             }
             this.gameOver = true;
-            pointsDom.classList.remove('d-none');
-            reStartDom.classList.remove('d-none');
+            loseDom.classList.remove('d-none');
         },
         clickTrue(index, optionsDom) {
-            const nextBtnDom = document.getElementById('next-btn');
-            const winDom = document.getElementById('win');
-            const trophyDom = document.getElementById('trophy');
-            const levelDom = document.querySelectorAll('#level-track .step');
+            this.userPoints++
             optionsDom[index].classList.add('green')
-            this.userPoints++;
-            for (let i = 0; i < levelDom.length; i++) {
-                levelDom[i].classList.remove('current-level')
-            }
-            levelDom[this.userPoints].classList.add('current-level')
-            nextBtnDom.classList.remove('d-none');
             this.clickActive = false;
             // se il punteggio è uguale alla length delle domande disponibili, lo user vince
             if (this.userPoints == this.questionsToDo.length) {
-                nextBtnDom.classList.add('d-none');
-                winDom.classList.remove('d-none');
-                trophyDom.classList.remove('d-none');
+                this.gameOver = true;
             }
         },
         generateSingleQuestion() {
             // generare la singola domanda con le relative opzioni
             const optionsDom = document.querySelectorAll('.options .text');
-            const nextBtnDom = document.getElementById('next-btn');
             for (let i = 0; i < optionsDom.length; i++) {
                 optionsDom[i].classList.remove('green');
             }
             this.clickActive = true;
-            nextBtnDom.classList.add('d-none');
             this.currentOptions = [];
             if (!this.gameOver) {
                 this.currentQuestion = this.questionsToDo[this.userPoints].question;
@@ -335,7 +310,7 @@ createApp({
             // array delle domande selezionate randomicamente
             const questions = [];
             // ciclo per la selezione delle domande
-            while (questions.length < this.datas.length) {
+            while (questions.length < 10) {
                 let singleQuestion = this.datas[this.generateRandomNumber(0, this.datas.length - 1)];
                 if (!questions.includes(singleQuestion)) {
                     questions.push(singleQuestion);

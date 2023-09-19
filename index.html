@@ -25,7 +25,9 @@
 
             <div id="level-track" class="d-none">
                 <div class="levels-container">
-                    <div class="step" v-for="(step, index) in 11">{{index}}</div>
+                    <!-- la classe current-level viene assegnata solo se lo userPoints corrisponde all'index del div -->
+                    <div class="step" :class="{ 'current-level': index === userPoints }" v-for="(step, index) in 11">
+                        {{index}}</div>
                 </div>
             </div>
 
@@ -42,14 +44,16 @@
                     </div>
                 </div>
 
-                <h2 id="lose" class="d-none">HAI PERSO CON UN PUNTEGGIO DI {{userPoints}}</h2>
-                <h2 id="win" class="d-none">HAI VINTO !!!</h2>
+                <h2 id="lose" :class="userPoints == 10 || gameOver == false ? 'd-none' : ''">HAI PERSO CON UN PUNTEGGIO
+                    DI
+                    {{userPoints}}</h2>
+                <h2 id="win" :class="userPoints < 10 ? 'd-none' : ''">HAI VINTO !!!</h2>
 
-                <button id="next-btn" class="d-none" @click="generateSingleQuestion()">Prossima domanda</button>
+                <button id="next-btn" :class="clickActive == true || gameOver == true ? 'd-none' : ''"
+                    @click="generateSingleQuestion()">Prossima domanda</button>
 
-                <button id="restart-btn" class="play-btn d-none" role="button" @click="reStart()">RIGIOCA</button>
-
-                <img id="trophy" class="d-none" src="img/trofeo.png" alt="Trofeo">
+                <button id="restart-btn" class="play-btn" :class="gameOver == false ? 'd-none' : ''" role="button"
+                    @click="reStart()">RIGIOCA</button>
 
             </div>
         </div>
