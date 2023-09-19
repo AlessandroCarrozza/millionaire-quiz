@@ -21,9 +21,10 @@
         <!-- container di domande e opzioni -->
         <div id='game-container'>
 
-            <button id="play-btn" class="play-btn" role="button" @click="playStart()">INIZIA PARTITA</button>
+            <button id="play-btn" class="play-btn" :class="questionsToDo.length > 0 ? 'd-none': ''" role="button"
+                @click="playStart()">INIZIA PARTITA</button>
 
-            <div id="level-track" class="d-none">
+            <div id="level-track" :class="questionsToDo.length == 0 ? 'd-none': ''">
                 <div class="levels-container">
                     <!-- la classe current-level viene assegnata solo se lo userPoints corrisponde all'index del div -->
                     <div class="step" :class="{ 'current-level': index === userPoints }" v-for="(step, index) in 11">
@@ -31,7 +32,7 @@
                 </div>
             </div>
 
-            <div class='game d-none'>
+            <div class='game' :class="questionsToDo.length == 0 ? 'd-none': ''">
                 <div class='question'>
                     <div class='text bg-gradient'>{{currentQuestion}}</div>
                 </div>
@@ -44,9 +45,7 @@
                     </div>
                 </div>
 
-                <h2 id="lose" :class="userPoints == 10 || gameOver == false ? 'd-none' : ''">HAI PERSO CON UN PUNTEGGIO
-                    DI
-                    {{userPoints}}</h2>
+                <h2 id="lose" :class="userPoints == 10 || gameOver == false ? 'd-none' : ''">HAI PERSO</h2>
                 <h2 id="win" :class="userPoints < 10 ? 'd-none' : ''">HAI VINTO !!!</h2>
 
                 <button id="next-btn" :class="clickActive == true || gameOver == true ? 'd-none' : ''"

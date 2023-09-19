@@ -160,14 +160,6 @@
     color: #bf0603;
 }
 
-#trophy {
-    height: 80px;
-}
-
-#game-over {
-    height: 150px;
-}
-
 /* tracciamento del livello */
 #level-track {
     width: 700px;
@@ -208,11 +200,7 @@
 
     #win {
         padding: 0 0.2rem;
-    }
-
-    #trophy {
-        height: 60px;
-        padding-top: 0.5rem;
+        margin: 1rem 0;
     }
 
     #level-track {

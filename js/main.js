@@ -225,30 +225,17 @@ createApp({
     },
     methods: {
         playStart() {
-            const playBtnDom = document.getElementById('play-btn');
-            const gameDom = document.querySelector('.game');
-            const levelTrackDom = document.getElementById('level-track');
-
-            playBtnDom.classList.add('d-none');
-            gameDom.classList.remove('d-none');
-            levelTrackDom.classList.remove('d-none');
-
             this.generateQuestionsList();
-
             this.generateSingleQuestion();
         },
         reStart() {
             const optionsDom = document.querySelectorAll('.options .text');
-            const loseDom = document.getElementById('lose');
-
-            loseDom.classList.add('d-none');
 
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result == false) {
                     optionsDom[i].classList.remove('red')
                 }
             }
-
 
             this.userPoints = 0;
             this.gameOver = false;
@@ -272,7 +259,6 @@ createApp({
             }
         },
         clickFalse(index, optionsDom) {
-            const loseDom = document.getElementById('lose');
             optionsDom[index].classList.add('red')
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result) {
@@ -280,7 +266,6 @@ createApp({
                 }
             }
             this.gameOver = true;
-            loseDom.classList.remove('d-none');
         },
         clickTrue(index, optionsDom) {
             this.userPoints++
