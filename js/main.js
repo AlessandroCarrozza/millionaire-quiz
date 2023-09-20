@@ -230,7 +230,6 @@ createApp({
         },
         reStart() {
             const optionsDom = document.querySelectorAll('.options .text');
-
             for (let i = 0; i < this.currentOptions.length; i++) {
                 if (this.currentOptions[i].result == false) {
                     optionsDom[i].classList.remove('red')
